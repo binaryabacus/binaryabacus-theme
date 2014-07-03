@@ -1,4 +1,19 @@
 {
-  "name": "BinaryAbacus",
-  "version": "0.0.1"
+  "name": "binaryabacus-theme",
+  "description": "Ghost theme for binaryabacus.io",
+  "version": "0.0.1",
+  "author": "Felix Lau <felixlaumon@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:felixlaumon/binaryabacus-theme.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap-stylus": "git://github.com/Acquisio/bootstrap-stylus",
+    "nib": "^1.0.3",
+    "stylus": "^0.47.1"
+  },
+  "devDependencies": {
+    "tiny-lr": "0.0.8"
+  }
 }

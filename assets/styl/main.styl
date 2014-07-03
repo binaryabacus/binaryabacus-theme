@@ -1,0 +1,119 @@
+@import 'node_modules/bootstrap-stylus/stylus/bootstrap'
+
+title-font-family = "tablet-gothic", "Helvectica Neue", Helvectica, Arial
+main-font-family = "minion-pro", Georgia, Times, serif
+
+primary = #4A4A4A
+secondary = #868686
+
+*
+  text-rendering optimizeLegibility
+
+h1, h2, h3, h4, h5, h6
+  font-size 16px
+  color primary
+  font-family title-font-family
+
+body
+  color primary
+  font-family main-font-family
+
+header
+  margin-top 25px
+
+.logo
+  img
+    height 40px
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+      position relative
+      top 16px
+    @media (min-width: $screen-sm-max)
+      position relative
+      top 7px
+
+.site-tagline
+  h4
+    font-size 15px
+    font-weight 300
+    line-height 1.2em
+
+.post-title
+  display inline
+  font-size 20px
+  font-weight bold
+  a
+    color inherit
+
+.post-meta
+  @media (min-width: $screen-sm-min)
+    margin-left 10px
+    display inline
+  font-family title-font-family
+  font-size 12px
+  font-weight 300
+  color secondary
+
+.post-tags
+  @media (min-width: $screen-sm-min)
+    margin-left 10px
+
+main[role=main]
+  @media (min-width: $screen-sm-min)
+    margin 0 45px
+
+.post-content
+  font-size 18px
+  line-height 1.4em
+
+  p:first-of-type {
+    margin-top 20px
+  }
+
+  p
+    margin-bottom 1.3em
+
+  img
+    width 100%
+
+  p, pre, blockquote, img, ul, ol
+    @media (min-width: $screen-sm-min)
+      width 500px
+
+.ted
+  font-weight 300
+  font-size 16px
+  @media (min-width: $screen-sm-min)
+    margin-top 4px
+  margin-top 0
+  margin-bottom 10px
+
+.vis
+  margin-bottom 20px
+  border 1px solid #CDCDCD
+
+  @media (min-width: $screen-sm-min)
+    margin-left -45px
+    margin-right -45px
+
+  img, iframe
+    width 100%
+    height 100%
+    min-height 500px
+    border 0
+
+.vis-control
+  margin-top 20px
+  margin-bottom 20px
+  font-family title-font-family
+  color secondary
+  font-size 12px
+
+  p
+    margin 0
+
+.btn-group
+  .btn
+    font-size 12px
+    &.active
+      font-weight bold
+
