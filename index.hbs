@@ -1,34 +1,20 @@
 {{!< default}}
 
-<div class="container">
-  <header class="row">
-    <div class="col-sm-6 logo">
-      <img src="{{asset "imgs/logo.png"}}" />
-    </div>
-    <div class="col-sm-6 site-tagline">
-      <h4><strong>BinaryAbacus.io</strong> is a data visualization blog devoted to telling stories in Asia with facts, numbers and interactive charts.</h4>
-    </div>
-  </header>
+{{#foreach posts}}
+  <hr class="row"></hr>
+  <article class="{{post_class}}">
+    <header>
+      <h1 class="post-title"><a href="{{url}}">{{{title}}}</a></h1>
+      <p class="post-meta">
+        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='dddd, D MMMM YYYY'}}</time>
+        <span class="post-tags">{{tags prefix="" separator=", "}}</span>
+      </p>
+    </header>
 
+    <section class="post-content">
+      {{content}}
+    </section>
+  </article>
+{{/foreach}}
 
-  <main class="continaer" role="main">
-    {{#foreach posts}}
-      <hr class="row"></hr>
-      <article class="{{post_class}}">
-        <header>
-          <h1 class="post-title"><a href="{{url}}">{{{title}}}</a></h1>
-          <p class="post-meta">
-            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='dddd, D MMMM YYYY'}}</time>
-            <span class="post-tags">{{tags prefix="" separator=", "}}</span>
-          </p>
-        </header>
-
-        <section class="post-content">
-          {{content}}
-        </section>
-      </article>
-    {{/foreach}}
-
-    {{pagination}}
-  </main>
-</div>
+{{pagination}}

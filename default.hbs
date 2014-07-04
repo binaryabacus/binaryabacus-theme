@@ -23,10 +23,34 @@
 
     <script src="//use.typekit.net/dou7uno.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
+
+    {{ghost_head}}
   </head>
   
   <body class="{{body_class}}" lang="en">
-    {{{body}}}
+    <div class="container">
+      <header class="row">
+        <div class="col-sm-6 logo">
+          <a href="{{@blog.url}}"><img src="{{asset "imgs/logo.png"}}" /></a>
+        </div>
+        <div class="col-sm-6 site-tagline">
+          <h4><strong>BinaryAbacus.io</strong> is a data visualization blog devoted to telling stories in Asia with facts, numbers and interactive charts.</h4>
+        </div>
+      </header>
+
+      <main role="main">
+        {{{body}}}
+      </main>
+
+      <hr class="row"></hr>
+
+      <footer>
+        <p class="author">© 2014 Felix Lau <a href="mailto:felixlaumon@gmail.com">felixlaumon@gmail.com</a><p>
+        <p class="license">Visualization and its code are under MIT License and can be found on <a href="https://github.com/felixlaumon">Github</a>.</p>
+
+        <p><a href="https://mixpanel.com/f/partner"><img src="//cdn.mxpnl.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a></p>
+      </footer>
+    </div>
 
     {{ghost_foot}}
 

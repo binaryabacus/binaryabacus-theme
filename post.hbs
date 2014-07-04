@@ -1,0 +1,22 @@
+{{!< default}}
+
+<hr class="row"></hr>
+
+{{#post}}
+
+<article class="{{post_class}}">
+  <header>
+    <h1 class="post-title"><a href="{{url}}">{{{title}}}</a></h1>
+    <p class="post-meta">
+      <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='dddd, D MMMM YYYY'}}</time>
+      <span class="post-tags">{{tags prefix="" separator=", "}}</span>
+    </p>
+  </header>
+
+  <section class="post-content">
+    {{content}}
+  </section>
+</article>
+
+{{/post}}
+
