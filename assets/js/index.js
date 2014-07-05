@@ -9,4 +9,16 @@ $(function domready () {
   $('iframe').each(function () {
     $(this).attr('src', $(this).data('src'));
   });
+
+  $('[data-fn]').each(function () {
+    var id = $(this).attr('data-target');
+    var fn = $(this).attr('data-fn');
+    $(this).click(function () {
+      window.rpc(id, fn);
+    });
+  });
+
+  window.rpc = function (id, fn) {
+    $('iframe#' + id).get(0).contentWindow.postMessage(fn, '*');
+  };
 });
