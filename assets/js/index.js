@@ -1,4 +1,10 @@
 $(function domready () {
+
+  mixpanel.track('page viewed', {
+    'page name' : document.title,
+    'url' : window.location.pathname
+  });
+
   $('iframe').attr({
     marginWidth: 0,
     marginHeight: 0,
@@ -15,6 +21,10 @@ $(function domready () {
     var fn = $(this).attr('data-fn');
     $(this).click(function () {
       window.rpc(id, fn);
+      mixpanel.track('visualization interacted', {
+        'button-name' : cleanLeadingTraingSpace($(this).text()),
+        'post-id' : $(this).parents('article').find('.post-title').text()
+      });
     });
   });
 
@@ -22,3 +32,7 @@ $(function domready () {
     $('iframe#' + id).get(0).contentWindow.postMessage(fn, '*');
   };
 });
+
+function cleanLeadingTraingSpace (str) {
+  return (str || '').replace(/^\s*/, '').replace(/\s*$/, '');
+}
