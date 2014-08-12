@@ -88,9 +88,11 @@ main[role=main], footer
     margin-top 4px
   margin-top 0
   margin-bottom 10px
+  line-height 2rem
 
 .vis
   margin-bottom 20px
+  position relative
 
   @media (min-width: $screen-sm-min)
     margin-left -45px
@@ -106,6 +108,20 @@ main[role=main], footer
     min-height 200px
     @media (min-width: $screen-sm-min)
       min-height 500px
+
+  &.popup iframe
+    min-height 200px !important
+    background-size cover
+    background-repeat no-repeat
+
+  &.popup:before
+    content ''
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    background url(imgs/tap-to-open.png) 50% 50% no-repeat, rgba(0,0,0,0.1)
 
 .vis-control
   margin-top 20px

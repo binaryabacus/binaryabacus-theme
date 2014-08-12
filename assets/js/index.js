@@ -16,6 +16,12 @@ $(function domready () {
     $(this).attr('src', $(this).data('src'));
   });
 
+  $('.vis').on('mouseover', _.throttle(function () {
+    mixpanel.track('visualization mouseover', {
+      'post-id' : $(this).parents('article').find('.post-title').text()
+    });
+  }, 1000));
+
   $('[data-fn]').each(function () {
     var id = $(this).attr('data-target');
     var fn = $(this).attr('data-fn');
@@ -27,6 +33,49 @@ $(function domready () {
       });
     });
   });
+
+  function reloadIframes () {
+    $('[data-reload-on-resize]').each(function () {
+      var $iframe = $(this);
+      var minWidth = $iframe.data('min-width');
+      if (minWidth && window.innerWidth <= minWidth) {
+        return;
+      }
+      $iframe.show();
+      var src = $iframe.data('src');
+      $iframe.attr('src', '');
+      setTimeout(function () {
+        $iframe.attr('src', src);
+      }, 1);
+    });
+  }
+
+  function setPopupIframes () {
+    $('[data-min-width]').each(function () {
+      var $iframe = $(this);
+      var minWidth = $iframe.data('min-width');
+      if (minWidth && window.innerWidth <= minWidth) {
+        $iframe.parent().addClass('popup');
+        $iframe.attr('src', '');
+        $iframe.css('background-image', 'url(' + $iframe.data('placeholder-image') + ')');
+      } else {
+        $iframe.parent().removeClass('popup');
+        $iframe.css('background-image', '');
+      }
+    });
+  }
+
+  $('article').on('click', '.vis.popup', function () {
+    var src = $(this).find('iframe').data('src');
+    window.open(src);
+  });
+
+  setPopupIframes();
+
+  $(window).resize(_.debounce(function () {
+    reloadIframes();
+    setPopupIframes();
+  }, 1000));
 
   window.rpc = function (id, fn) {
     $('iframe#' + id).get(0).contentWindow.postMessage(fn, '*');
